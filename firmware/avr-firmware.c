@@ -297,11 +297,101 @@ static void ram_test_isr_code(unsigned addr)
 }
 
 static unsigned dump_mem;
+static unsigned count = 0;
 
 // seem to be seeing double execution of the CLC instruction at 0x00
 // but with two cycles, the first is addr, adn then with addr+1
 
-unsigned count = 0;
+/* device is reading from emulated rom, so we need to return a value on the
+ * data lines depending on the address
+ */
+static inline void handle_rom_read(unsigned addr)
+{
+	PORTA = ram[addr];
+
+	if (addr == 0x1e) {
+		unsigned ptr;
+		pf("BRK!\n");
+
+		for (ptr = 0x00; ptr < 0x10; ptr++)
+			ram[ptr] = pgm_read_byte(ramtest_code_read + ptr);
+
+		PORTA = ram[addr];
+		download_to = 0x1fc;
+		dump_mem  = 1;
+		download = 0;
+		ram_test = 0;
+		ram[5] = 0x1d;  // change where memory is written to
+	}
+
+	if (download) {
+		if (addr == 0) {
+			ram[1] = pgm_read_byte(download_ptr);
+			ram[3] = download_to & 0xff;
+			ram[4] = download_to >> 8;
+			pf("DL %04x %02x (C=%d)\n", download_to, ram[2], count);
+
+			download_to++;
+			download_ptr++;
+			download--;
+
+			if (download == 0) {
+				pf("Download done\n");
+				ram[5] = 0xb0;  /* change BCC to BCS */
+			} else {
+				ram[5] = 0x90;
+			}
+		}
+	} else if (ram_test) {
+		if (addr == 0)
+			ram_test_isr_code(addr);
+
+	} else if (dump_mem) {
+		if (addr == 0) {
+			pf("DBG %04x = ", download_to);
+			ram[1] = download_to & 0xff;
+			ram[2] = download_to >> 8;
+			download_to++;
+			if (download_to == 0x200)
+				download_to = 0x800;
+			if (download_to > 0x810) {
+				halt();
+			}
+		}
+
+	}
+}
+
+static void handle_dev_write(unsigned addr, unsigned data)
+{
+	unsigned tmp;
+	
+	switch (addr) {
+	case 0x1d:
+		pf("%02x\n", data);
+		break;
+	case 0x1e:
+		pf("DBG %02x\n", data);
+		break;
+
+	case 0x1f:
+		tmp =  ram_test_pattern(ram_test_ptr) & 0xff;
+		if (data == tmp) {
+			// good, ignore //
+		} else {
+			pf("RT %04x -> got %02x want %02x, diff %02x\n",
+			   ram_test_ptr, data, tmp, data ^ tmp);
+			_delay_ms(100);
+		}
+		ram_test_ptr++;
+		break;
+
+	default:
+		if (1)
+			pf("DW unhandled %02x %02x\n", addr, data);
+	}
+}
+
 ISR(INT2_vect)
 {
 	unsigned portc = PINC;
@@ -317,63 +407,10 @@ ISR(INT2_vect)
 			if (0 || (addr >= 0x1e) || dump_mem)
 				pf("RD %02x = %02x C=%u\n", addr, ram[addr], count);
 
-			PORTA = ram[addr];
-
-			if (addr == 0x1e) {
-				unsigned ptr;
-				pf("BRK!\n");
-
-				for (ptr = 0x00; ptr < 0x10; ptr++)
-					ram[ptr] = pgm_read_byte(ramtest_code_read + ptr);
-
-				PORTA = ram[addr];
-				download_to = 0x1fc;
-				dump_mem  = 1;
-				download = 0;
-				ram_test = 0;
-				ram[5] = 0x1d;  // change where memory is written to
-			}
-
-			if (download) {
-				if (addr == 0) {
-					ram[1] = pgm_read_byte(download_ptr);
-					ram[3] = download_to & 0xff;
-					ram[4] = download_to >> 8;
-					pf("DL %04x %02x (C=%d)\n", download_to, ram[2], count);
-
-					download_to++;
-					download_ptr++;
-					download--;
-
-					if (download == 0) {
-						pf("Download done\n");
-						ram[5] = 0xb0;  /* change BCC to BCS */
-					} else {
-						ram[5] = 0x90;
-					}
-				}
-			} else if (ram_test) {
-				if (addr == 0)
-					ram_test_isr_code(addr);
-
-			} else if (dump_mem) {
-				if (addr == 0) {
-					pf("DBG %04x = ", download_to);
-					ram[1] = download_to & 0xff;
-					ram[2] = download_to >> 8;
-					download_to++;
-					if (download_to == 0x200)
-						download_to = 0x800;
-					if (download_to > 0x810) {
-						halt();
-					}
-				}
-
-			}
+			handle_rom_read(addr);
 		}
 	} else {
 		unsigned data;
-		unsigned tmp;
 
 		/* handle write to device */
 
@@ -386,28 +423,7 @@ ISR(INT2_vect)
 			pf("WR %02x %02x\n", addr, data);
 
 		if ((portc & (1 << 7)) == 0) {
-			switch (addr) {
-
-
-			case 0x1d:
-				pf("%02x\n", data);
-				break;
-			case 0x1e:
-				pf("DBG %02x\n", data);
-				break;
-
-			case 0x1f:
-				tmp =  ram_test_pattern(ram_test_ptr) & 0xff;
-				if (data == tmp) {
-					// good, ignore //
-				} else {
-					pf("RT %04x -> got %02x want %02x, diff %02x\n",
-					   ram_test_ptr, data, tmp, data ^ tmp);
-					_delay_ms(100);
-				}
-				ram_test_ptr++;
-
-			}
+			handle_dev_write(addr, data);
 		} else {
 			pf("WR %02x %02x\n", addr, data);
 
