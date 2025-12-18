@@ -203,6 +203,7 @@ LDX #$00
 loop STX $801E
 INX
 BCC loop
+BRK
 .END
 	*/
 	0xa2, 0x00,
@@ -217,7 +218,7 @@ BCC loop
 static const unsigned char ramtest_code_read[] PROGMEM = {
 /*
 *=$c000
-CLC
+//CLC
 loop
 LDX $0123
 STX $801F
@@ -302,6 +303,30 @@ static unsigned count = 0;
 // seem to be seeing double execution of the CLC instruction at 0x00
 // but with two cycles, the first is addr, adn then with addr+1
 
+/* update the download code ram when addr+0x0 is read so that the
+ * download data is there and if the download is finished we continue
+ * on past the BCC loop
+ */
+static inline void update_download_state(void)
+{
+	ram[1] = pgm_read_byte(download_ptr);
+	ram[3] = download_to & 0xff;
+	ram[4] = download_to >> 8;
+	pf("DL %04x %02x (C=%d)\n", download_to, ram[2], count);
+
+	download_to++;
+	download_ptr++;
+	download--;
+
+	if (download == 0) {
+		pf("Download done\n");
+		ram[5] = 0xb0;  /* change BCC to BCS */
+	} else {
+		ram[5] = 0x90;
+	}
+}
+}
+
 /* device is reading from emulated rom, so we need to return a value on the
  * data lines depending on the address
  */
@@ -325,23 +350,8 @@ static inline void handle_rom_read(unsigned addr)
 	}
 
 	if (download) {
-		if (addr == 0) {
-			ram[1] = pgm_read_byte(download_ptr);
-			ram[3] = download_to & 0xff;
-			ram[4] = download_to >> 8;
-			pf("DL %04x %02x (C=%d)\n", download_to, ram[2], count);
-
-			download_to++;
-			download_ptr++;
-			download--;
-
-			if (download == 0) {
-				pf("Download done\n");
-				ram[5] = 0xb0;  /* change BCC to BCS */
-			} else {
-				ram[5] = 0x90;
-			}
-		}
+		if (addr == 0)
+			update_download_state();
 	} else if (ram_test) {
 		if (addr == 0)
 			ram_test_isr_code(addr);
