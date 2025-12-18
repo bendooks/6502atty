@@ -195,6 +195,8 @@ void pf(const char *msg, ...)
 		uart_putc(buff[off]);
 }
 
+/* hand assembled 6502 for doing stuff */
+
 const unsigned char download_code[] PROGMEM = {
 	/*
 
@@ -324,7 +326,6 @@ static inline void update_download_state(void)
 	} else {
 		ram[5] = 0x90;
 	}
-}
 }
 
 /* device is reading from emulated rom, so we need to return a value on the
