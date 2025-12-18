@@ -13,7 +13,11 @@
 #include <stdarg.h>
 #include <stdint.h>
 
+void pf(const char *msg, ...);
+  
+#include "gpio.h"
 #include "pins.h"
+#include "pin_defaults.h"
 
 static void init_pwm(void)
 {
@@ -139,7 +143,6 @@ static void init_clock(void)
 }
 
 #define USART_BAUDRATE	115200
-//#define USART_BAUDRATE	9600
 #define BAUD_PRESCALE	(((F_CPU / (USART_BAUDRATE * 16UL))) - 1)
 
  void init_uart(void)
@@ -372,6 +375,8 @@ ISR(INT2_vect)
 		unsigned data;
 		unsigned tmp;
 
+		/* handle write to device */
+
 		DDRA = 0x00;
 		_delay_us(1);
 		data = PINA;
@@ -409,14 +414,11 @@ ISR(INT2_vect)
 		}
 	}
 
-	PORTD &= ~(1 << 5);	/* take ack low */
-	PORTD |= (1 << 5);	/* clear the ack */
+	/* pulse ack pin to let the 6502 continue */
+	set_pin(PIN_AT_ACK, 0);
+	set_pin(PIN_AT_ACK, 1);
 
 	count++;
-	if (count > 128 && 0) {
-		PORTB &= ~(1 << 0);
-		PORTD &= ~(1 << 7);
-	}
 }
 
 int main(void)
@@ -427,68 +429,32 @@ int main(void)
 
 	count = 0;
 
+	/* initialise our virtual ram/rom */
 	ram[0xFC & 0x1f] = 0x00;
 	ram[0xFD & 0x1f] = 0xC0;  // set "rom" as reset vectir
 	ram[0xFE & 0x1f] = 0x00;
 	ram[0xFF & 0x1f] = 0xC0;  // set "rom" as break vectir
 
-	DDRA = 0xff;	/* set all lines to output */
-	PORTA = 0xEA;	/* default is for NOP instruction */
-
-	DDRB = 0x00;
-	DDRC = 0x00;
-	PORTC = 0x0;
-
-	DDRB |= 0x01;	/* PB0 is nRESET_6502 for now */
-	PORTB &= ~0x01;
-	
-	DDRD |= 0x80;	/* PD7 is nRESET, so start it low */
-	PORTD &= ~0x80;
-	
-	DDRD |= 0x40;	/* set PD6 for PWM operation, OC2B */
-	PORTD |= 0x40;	/* set PD6 to output 1 for PWM */
-
-	DDRD |= (1 << 1); // tdx0 ?
-
-	DDRD |= (1 << 5);	/* PD5 is "n_megaack", set high */
-	PORTD |= (1 << 5);	/* default high, no ack */
-
-	DDRD |= (1 << 4);	/* PD4 is ROM-SEL */
-	//PORTD |= (1 << 4);	/* think high = use mega as rom */
-	PORTD &= ~(1 << 4);	/* think low = use mega as rom */
-
+	init_gpio();
 	init_clock();
 	init_pwm();
 	init_uart();
 
 	sei();
 
-	//_delay_ms(1000);
+	/* prototype needs to release master reset */
 	_delay_ms(100);
-	PORTD |= 0x80;	/* release reset */
+#ifdef PIN_MAIN_RESET
+	set_pin(PIN_MAIN_RESET, 1);
+#endif
+
+	/* enable interrupts */
 
 	EICRA = (1 << ISC21) | (0 << ISC20);
 	EIMSK = (1 << 2);
 
 #if 0
-	while (1) {
-		PORTD |= (1 << 7);
-		PORTD &= ~(1 << 7);
-	}
-#endif
-
-#if 0
-
-	while (1) {
-		PORTD |= (1 << 7);
-		_delay_ms(100);
-		PORTD &= ~(1 << 7);
-		_delay_ms(100);
-	}
-
-#endif
-
-#if 0
+	/* timer to toggle leds for testing */
 
 	TCCR1B |= (1 << WGM12); // Configure timer 1 for CTC mode
         OCR1A = 39062/20;        // Set CTC compare value to 1Hz at 8MHz F_CPU (prescale 256)
@@ -500,7 +466,7 @@ int main(void)
 	pf("\nstarting code..\n");
 
 	_delay_ms(100);
-	PORTB |= 0x01;	/* release 6502 reset */
+	set_pin(PIN_6502_nRESET, 1);	/* release 6502 reset */
 
 	while (1) { }
 }
