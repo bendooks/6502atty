@@ -129,8 +129,10 @@ static void init_clock(void)
 	} else if (F_CPU == (F_XTAL / 2)) {
 		CLKPR = 0 | (1 << CLKPCE);
 		CLKPR = 1;
-	} else
-		__bad_crystal();	/* default to compiler error */
+	} else {
+		extern void __bad_crystal(void);
+		__bad_crystal();	/* default to compiler link error */
+	}
 
 	/* wait for clock change to take place */
 	while (CLKPR & (1 << CLKPCE)) { }
