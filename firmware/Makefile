@@ -12,7 +12,8 @@ LD		= avr-ld
 OBJCOPY		= avr-objcopy
 OBJDUMP		= avr-objdump
 
-ATPACK		= $(shell pwd)/atpack
+# atpack for atmega devices downloader from "Atmel"
+ATPACK		= $(shell pwd)/atpack/atmega/
 
 # using the external crystal option at 18.432MHz, used 1:1 as we're at 5V
 XTAL=18432000
@@ -31,7 +32,7 @@ CFLAGS+=-DBUILD_DATE="\"$(BUILD_DATE)\""
 CFLAGS+=-DVERSION="\"$(VERSION)\""
 
 # include support from the atmel device pack
-#CFLAGS+=-I$(ATPACK)/include/ -B$(ATPACK)/gcc/dev/atmega324pb/
+CFLAGS+=-I$(ATPACK)/include/ -B$(ATPACK)/gcc/dev/atmega324pb/
 LDFLAGS= -Wl,-Map,$(PRG).map
 
 # set the version of the hardware
