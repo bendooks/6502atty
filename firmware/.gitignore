@@ -1,0 +1,10 @@
+# ignore generated build files
+
+build-info.h
+*.o
+
+# generated firmware output
+
+firmware.*
+firmware_eeprom.*
+
