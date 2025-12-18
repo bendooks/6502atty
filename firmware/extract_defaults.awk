@@ -5,8 +5,8 @@
 #
 # SPDX-License-Identifier: MIT OR Apache-2.0 
 
+# defaults are input with no pull-up
 function init_bank(bank) {
-    /* defaults are input with no pull-up */
     for (pin = 0; pin < 8; pin++) {
 	ddr[bank][pin] = 0
 	opval[bank][pin] = 0
@@ -26,6 +26,7 @@ BEGIN {
     gsub(",","",$4)
     gsub(",","",$5)
 
+    # debug
     if (0 == 1) {
 	print "// " $4 " " $5 " " $6
     }
@@ -47,6 +48,9 @@ BEGIN {
     }
 }
 
+# write a bank's DDR and PORT register initial values
+# write the pull-up first to PORTx as this means we get a weak-pull
+# before then setting the value to 1 once then writing the DDR registre
 function output(bank)
 {
     printf "Writing bank %s\n", bank > "/dev/stderr"
@@ -56,13 +60,6 @@ function output(bank)
 
     printf "\n\t/* Writing bank %s */\n", bank
     
-    /* DDR is 0 for input, 1 for output */
-    printf("\tDDR%s = ", postfix)
-    for (pin = 0; pin < 8; pin++) {
-	printf "(%d << %d) | ",ddr[bank][pin], pin
-    }
-    print "0;"
-
     printf("\tPORT%s = ", postfix)
     for (pin = 0; pin < 8; pin++) {
 	if (ddr[bank][pin] == 1) {
@@ -74,6 +71,14 @@ function output(bank)
 	printf "(%d << %d) | ",val, pin
     }
     print "0;"
+
+    # DDR is 0 for input, 1 for output
+    printf("\tDDR%s = ", postfix)
+    for (pin = 0; pin < 8; pin++) {
+	printf "(%d << %d) | ",ddr[bank][pin], pin
+    }
+    print "0;"
+
 }
 
 END {
