@@ -47,6 +47,15 @@ BEGIN {
     }
 }
 
+function output_bitval(val, pin)
+{
+    	printf "(%d << %d)",val, pin
+	if (pin < 7)
+	    printf " | ";
+	else
+	    print ";"
+}
+
 # write a bank's DDR and PORT register initial values
 # write the pull-up first to PORTx as this means we get a weak-pull
 # before then setting the value to 1 once then writing the DDR registre
@@ -66,17 +75,15 @@ function output(bank)
 	} else {
 	    val = pupval[bank][pin]
 	}
-	
-	printf "(%d << %d) | ",val, pin
+
+	output_bitval(val, pin)
     }
-    print "0;"
 
     # DDR is 0 for input, 1 for output
     printf("\tDDR%s = ", postfix)
     for (pin = 0; pin < 8; pin++) {
-	printf "(%d << %d) | ",ddr[bank][pin], pin
+	output_bitval(ddr[bank][pin], pin)
     }
-    print "0;"
 
 }
 
