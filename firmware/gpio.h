@@ -8,7 +8,6 @@ static inline int read_gpio(int pin)
 	case 1:	return PINB & (1 << offs);
 	case 2:	return PINC & (1 << offs);
 	case 3:	return PIND & (1 << offs);
-	case 4: return PINE & (1 << offs);
 	default:
 		return 0;
 	}
@@ -24,7 +23,6 @@ static inline int get_ddr(int pin)
 	case 1:	return DDRB & (1 << offs);
 	case 2:	return DDRC & (1 << offs);
 	case 3:	return DDRD & (1 << offs);
-	case 4: return DDRE & (1 << offs);
 	default:
 		return 0;
 	}
@@ -49,7 +47,6 @@ static inline void set_pin(int pin, int to)
 		case 1: PORTB |= (1 << offs); break;
 		case 2: PORTC |= (1 << offs); break;
 		case 3: PORTD |= (1 << offs); break;
-		case 4: PORTE |= (1 << offs); break;
 		default: pf("Unknown pin %d\n", pin);
 		}
 	} else {
@@ -58,7 +55,6 @@ static inline void set_pin(int pin, int to)
 		case 1: PORTB &= ~(1 << offs); break;
 		case 2: PORTC &= ~(1 << offs); break;
 		case 3: PORTD &= ~(1 << offs); break;
-		case 4: PORTE &= ~(1 << offs); break;
 		default: pf("Unknown pin %d\n", pin);
 		}
 	}
@@ -74,7 +70,6 @@ static inline void set_ddr(int pin, int to)
 		case 1: DDRB |= (1 << offs); break;
 		case 2: DDRC |= (1 << offs); break;
 		case 3: DDRD |= (1 << offs); break;
-		case 4: DDRE |= (1 << offs); break;
 		}
 	} else {
 		switch (pin >> 3) {
@@ -82,7 +77,6 @@ static inline void set_ddr(int pin, int to)
 		case 1: DDRB &= ~(1 << offs); break;
 		case 2: DDRC &= ~(1 << offs); break;
 		case 3: DDRD &= ~(1 << offs); break;
-		case 4: DDRE &= ~(1 << offs); break;
 		}
 	}
 }
@@ -95,6 +89,5 @@ static inline void toggle_pin(int pin)
 	case 1: PORTB ^= (1 << offs); break;
 	case 2: PORTC ^= (1 << offs); break;
 	case 3: PORTD ^= (1 << offs); break;
-	case 4: PORTE ^= (1 << offs); break;
 	}
 }
