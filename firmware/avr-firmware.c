@@ -419,8 +419,7 @@ ISR(INT2_vect)
 	}
 }
 
-
-void main(void)
+int main(void)
 {
 
 	cli();
