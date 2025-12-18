@@ -31,6 +31,10 @@ CFLAGS=-O2 -Wall -DF_CPU=$(FREQ) -DF_XTAL=$(XTAL) -mmcu=$(MCU)
 CFLAGS+=-DBUILD_DATE="\"$(BUILD_DATE)\""
 CFLAGS+=-DVERSION="\"$(VERSION)\""
 
+# set the build-type to the reelase
+CFLAGS+=-DBUILD_RELASE=1
+# CFLAGS+=-DBUILD_PROTOTYPE=1
+
 # include support from the atmel device pack
 CFLAGS+=-I$(ATPACK)/include/ -B$(ATPACK)/gcc/dev/atmega324pb/
 LDFLAGS= -Wl,-Map,$(PRG).map
