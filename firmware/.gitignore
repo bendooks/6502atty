@@ -1,7 +1,8 @@
 # ignore generated build files
 
-build-info.h
 *.o
+git-rev.h
+build-info.h
 
 # generated firmware output
 
