@@ -19,7 +19,6 @@ BEGIN {
     init_bank("BANK_B")
     init_bank("BANK_C")
     init_bank("BANK_D")
-    init_bank("BANK_E")
 }
 
 /PIN/	{
@@ -87,6 +86,5 @@ END {
     output("BANK_B")
     output("BANK_C")
     output("BANK_D")
-    output("BANK_E")
     print "}"
 }
