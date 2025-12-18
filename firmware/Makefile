@@ -69,7 +69,7 @@ avr-firmware.o:	pin_defaults.h git-rev.h gpio.h firmware.h  Makefile
 
 
 pin_defaults.h:	pins.h extract_defaults.awk Makefile
-	$(CC) -fdirectives-only -E $(CFLAGS) pins.h | sed -e 's/'\('/ /g' | sed -e  's/'\)'/ /g' | awk -f extract_defaults.awk > pin_defaults.h
+	$(CC) -fdirectives-only -E $(CFLAGS) pins.h | sed -e 's/'\('/ /g' | sed -e  's/'\)'/ /g' | gawk -f extract_defaults.awk > pin_defaults.h
 
 .PHONY: git-rev
 git-rev:
