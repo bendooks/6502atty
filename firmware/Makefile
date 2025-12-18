@@ -86,8 +86,10 @@ prog:
 
 .PHONY: clean
 clean:
-	rm -rf *.o $(PRG).elf *.eps *.png *.pdf *.bak 
-	rm -rf *.lst *.map $(EXTRA_CLEAN_FILES)
+	- rm - *.o $(PRG).elf *.eps *.png *.pdf *.bak
+	- rm  $(PRG).bin $(PRG).hex $(PRG).srec
+	- rm  $(PRG)_eeprom.bin $(PRG)_eeprom.hex $(PRG)_eeprom.srec
+	- rm *.lst *.map
 
 $(PRG).elf: $(OBJ)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
