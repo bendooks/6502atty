@@ -20,6 +20,12 @@ void pf(const char *msg, ...);
 #include "pin_defaults.h"
 
 #include "git-rev.h"
+#include "build-info.h"
+
+const char build_info[] = "BUILD:\n" \
+  "BUILD-BY: " BUILD_BY "\n" \
+  "GIT-VER: " GIT_VERSION "\n" \
+  "GIT-SHA: " GIT_HEAD "\n";
 
 static void init_pwm(void)
 {
@@ -32,8 +38,6 @@ static void init_pwm(void)
 	OCR2A = 0x10;
 	OCR2B = 0x5;
 }
-
-
 
 static unsigned char ram[32] = {
 #if 0
