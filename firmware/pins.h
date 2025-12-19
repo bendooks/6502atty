@@ -31,8 +31,8 @@
 
 #if 1
 /* default to output, value should be 0xEA */
-#define PIN_DB0		PIN(BANK_A, 0, DEF_OUTPUT_1)
-#define PIN_DB1		PIN(BANK_A, 1, DEF_OUTPUT_0)
+#define PIN_DB0		PIN(BANK_A, 0, DEF_OUTPUT_0)
+#define PIN_DB1		PIN(BANK_A, 1, DEF_OUTPUT_1)
 #define PIN_DB2		PIN(BANK_A, 2, DEF_OUTPUT_0)
 #define PIN_DB3		PIN(BANK_A, 3, DEF_OUTPUT_1)
 #define PIN_DB4		PIN(BANK_A, 4, DEF_OUTPUT_0)
