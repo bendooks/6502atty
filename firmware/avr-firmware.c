@@ -19,6 +19,8 @@ void pf(const char *msg, ...);
 #include "pins.h"
 #include "pin_defaults.h"
 
+#include "git-rev.h"
+
 static void init_pwm(void)
 {
 	//TCCR2A = (2 << 4) /* OC2B = normal) */ | (2 << 0) /* CTC */;
@@ -455,6 +457,10 @@ int main(void)
 	wdt_disable();
 
 	count = 0;
+
+	if (1) {
+	  pf("6502Atty (" GIT_VERSION ")\n");
+	}
 
 	/* initialise our virtual ram/rom */
 	ram[0xFC & 0x1f] = 0x00;
