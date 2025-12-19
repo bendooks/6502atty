@@ -1,1 +1,8 @@
 6502atty-backups
+
+# ignore some project stuff
+
+*-backups
+*-cache*
+*-bak
+*-bak*
