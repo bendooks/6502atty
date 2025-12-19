@@ -500,7 +500,7 @@ int main(void)
         TIMSK1 = (1 << OCIE1A);
 #endif	
 
-	pf("\nstarting code..\n");
+	pf("\nstarting 6502..\n");
 
 	_delay_ms(100);
 	set_pin(PIN_6502_nRESET, 1);	/* release 6502 reset */
