@@ -49,11 +49,11 @@ BEGIN {
 
 function output_bitval(val, pin)
 {
-    	printf "(%d << %d)",val, pin
-	if (pin < 7)
-	    printf " | ";
-	else
-	    print ";"
+    printf "(%d << %d)",val, pin
+    if (pin < 7)
+	printf " | ";
+    else
+	printf ";"
 }
 
 # write a bank's DDR and PORT register initial values
@@ -76,14 +76,21 @@ function output(bank)
 	    val = pupval[bank][pin]
 	}
 
+	total = total + lshift(val, pin)
 	output_bitval(val, pin)
     }
+    printf("\t/* 0x%02X */", total)
+    print
 
     # DDR is 0 for input, 1 for output
+    total = 0
     printf("\tDDR%s = ", postfix)
     for (pin = 0; pin < 8; pin++) {
+	total = total + lshift(ddr[bank][pin], pin)
 	output_bitval(ddr[bank][pin], pin)
     }
+    printf("\t/* 0x%02X */", total)
+    print
 
 }
 
