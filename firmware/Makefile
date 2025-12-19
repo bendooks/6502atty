@@ -31,16 +31,14 @@ CFLAGS=-O2 -Wall -DF_CPU=$(FREQ) -DF_XTAL=$(XTAL) -mmcu=$(MCU)
 CFLAGS+=-DVERSION="\"$(VERSION)\""
 
 # set the build-type to the reelase
-CFLAGS+=-DBUILD_RELASE=1
-# CFLAGS+=-DBUILD_PROTOTYPE=1
+BUILD_TYPE=RELEASE
+#BUILD_TYPE=PROTOTYPE
+CFLAGS+=-DBUILD_$(BUILD_TYPE)=1
+export BUILD_TYPE
 
 # include support from the atmel device pack
 CFLAGS+=-I$(ATPACK)/include/ -B$(ATPACK)/gcc/dev/atmega324pb/
-LDFLAGS= -Wl,-Map,$(PRG).map
-
-# set the version of the hardware
-#CFLAGS+=-DV2R1=1
-CFLAGS+=-DV2R2=1
+LDFLAGS= -Wl,-Map,$(PRG).mapy
 
 # note, the 324pb requeest hfuse to be 0xD9 to work
 

@@ -13,6 +13,7 @@ cat > $TMPFILE <<EOF
 #define BUILD_USER "$BUILD_USER"
 #define BUILD_HOST "$BUILD_HOST"
 #define BUILD_BY "$BUILD_USER@$BUILD_HOST"
+#define BUILD_TYPE "$BUILD_TYPE"
 EOF
 
 diff -q $TMPFILE build-info.h >/dev/null 2>/dev/null
