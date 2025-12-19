@@ -28,7 +28,6 @@ FREQ=18432000
 #FREQ=1000000
 
 CFLAGS=-O2 -Wall -DF_CPU=$(FREQ) -DF_XTAL=$(XTAL) -mmcu=$(MCU)
-CFLAGS+=-DBUILD_DATE="\"$(BUILD_DATE)\""
 CFLAGS+=-DVERSION="\"$(VERSION)\""
 
 # set the build-type to the reelase
@@ -82,7 +81,6 @@ git-rev:
 .PHONY: build-info
 build-info:
 	@sh build-info.sh
-
 
 .PHONY: prog
 prog:
