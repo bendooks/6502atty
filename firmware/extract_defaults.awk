@@ -61,12 +61,12 @@ function output_bitval(val, pin)
 # before then setting the value to 1 once then writing the DDR registre
 function output(bank)
 {
-    printf "Writing bank %s\n", bank > "/dev/stderr"
+    printf "Writing %s\n", bank > "/dev/stderr"
 
     postfix=bank
     gsub("BANK_","",postfix)
 
-    printf "\n\t/* Writing bank %s */\n", bank
+    printf "\n\t/* Setup %s */\n", bank
     
     printf("\tPORT%s = ", postfix)
     for (pin = 0; pin < 8; pin++) {
