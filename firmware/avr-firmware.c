@@ -22,7 +22,7 @@ void pf(const char *msg, ...);
 #include "git-rev.h"
 #include "build-info.h"
 
-const char build_info[] = "BUILD:\n" \
+const char build_info[] = "BUILD: " BUILD_TYPE "\n" \
   "BUILD-BY: " BUILD_BY "\n" \
   "GIT-VER: " GIT_VERSION "\n" \
   "GIT-SHA: " GIT_HEAD "\n";
