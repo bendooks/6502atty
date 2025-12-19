@@ -84,7 +84,7 @@ function output(bank)
 
     # DDR is 0 for input, 1 for output
     total = 0
-    printf("\tDDR%s = ", postfix)
+    printf("\tDDR%s  = ", postfix)
     for (pin = 0; pin < 8; pin++) {
 	total = total + lshift(ddr[bank][pin], pin)
 	output_bitval(ddr[bank][pin], pin)
