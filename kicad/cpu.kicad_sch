@@ -1685,7 +1685,7 @@
 	)
 	(wire
 		(pts
-			(xy 257.81 62.23) (xy 261.62 62.23)
+			(xy 259.08 60.96) (xy 262.89 60.96)
 		)
 		(stroke
 			(width 0)
@@ -1945,7 +1945,7 @@
 	)
 	(wire
 		(pts
-			(xy 261.62 62.23) (xy 261.62 59.69)
+			(xy 262.89 60.96) (xy 262.89 58.42)
 		)
 		(stroke
 			(width 0)
@@ -2580,7 +2580,7 @@
 	)
 	(hierarchical_label "~{SO}"
 		(shape bidirectional)
-		(at 257.81 62.23 180)
+		(at 259.08 60.96 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2810,7 +2810,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "4K7"
 			(at 210.82 55.8799 0)
 			(effects
 				(font
@@ -2880,7 +2880,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "4K7"
 			(at 229.87 55.8799 0)
 			(effects
 				(font
@@ -2933,7 +2933,7 @@
 	)
 	(symbol
 		(lib_id "power:VCC")
-		(at 261.62 52.07 0)
+		(at 262.89 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2942,7 +2942,7 @@
 		(fields_autoplaced yes)
 		(uuid "1b1d338e-f3ed-4592-b8d9-5ef8e1768281")
 		(property "Reference" "#PWR035"
-			(at 261.62 55.88 0)
+			(at 262.89 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2951,7 +2951,7 @@
 			)
 		)
 		(property "Value" "VCC"
-			(at 261.62 46.99 0)
+			(at 262.89 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2959,7 +2959,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 261.62 52.07 0)
+			(at 262.89 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2968,7 +2968,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 261.62 52.07 0)
+			(at 262.89 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2977,7 +2977,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 261.62 52.07 0)
+			(at 262.89 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3016,7 +3016,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "4K7"
 			(at 246.38 55.8799 0)
 			(effects
 				(font
@@ -3218,7 +3218,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "4K7"
 			(at 193.04 55.8799 0)
 			(effects
 				(font
@@ -3920,7 +3920,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 261.62 55.88 0)
+		(at 262.89 54.61 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3929,7 +3929,7 @@
 		(fields_autoplaced yes)
 		(uuid "eefeecc3-9800-4b7e-a29c-9ea3c4639769")
 		(property "Reference" "R20"
-			(at 264.16 54.6099 0)
+			(at 265.43 53.3399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3937,8 +3937,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
-			(at 264.16 57.1499 0)
+		(property "Value" "4K7"
+			(at 265.43 55.8799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3947,7 +3947,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 259.842 55.88 90)
+			(at 261.112 54.61 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3956,7 +3956,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 261.62 55.88 0)
+			(at 262.89 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3965,7 +3965,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 261.62 55.88 0)
+			(at 262.89 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)

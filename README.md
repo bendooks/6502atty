@@ -15,10 +15,13 @@ The ATmega is probably the easiest MCU to get and program which is 5V tolerant. 
 ## PCB updates (v1 rev2)
 
 - Added J12 to route ~WE signal to the PGM/~WE to allow SRAM
+  - Also requires a R/!W signal gated with PHI2 high
+  - Added R~{W}ph signal for ROM
+  - This new signal could also drive RAM ~WE and connect ~CS to A15
 - Connected ROM's VPP signal to GND, if using SRAM, ties A14 to GND
 - U9C's pins 9 and 10 swapped for routing
 - U11's E1/E2 pins swapped for easier routing
-- Possible transcription error from prototype, ROM_ACC should be from AND not NAND gate
+- Transcription error from prototype, ROM_ACC should be from AND not NAND gate
   - Swao U8C for one of U10 spare gates
 - RDY line missing pull-up resistor
 

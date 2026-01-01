@@ -5852,7 +5852,7 @@
 				)
 			)
 		)
-		(property "Value" "330R"
+		(property "Value" "680R"
 			(at 241.554 99.568 90)
 			(effects
 				(font
@@ -6165,7 +6165,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "4K7"
 			(at 86.36 83.8199 0)
 			(effects
 				(font
@@ -6877,7 +6877,7 @@
 				)
 			)
 		)
-		(property "Value" "330R"
+		(property "Value" "680R"
 			(at 232.463 42.9183 90)
 			(effects
 				(font
@@ -6946,7 +6946,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "4K7"
 			(at 186.69 81.2799 0)
 			(effects
 				(font
@@ -7652,7 +7652,7 @@
 				)
 			)
 		)
-		(property "Value" "330R"
+		(property "Value" "680R"
 			(at 232.463 25.1383 90)
 			(effects
 				(font
@@ -7973,7 +7973,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "713576c3-0833-44c6-89b9-3d6d1dcb7a34")
 		(property "Reference" "RN2"
@@ -7985,7 +7985,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R_Network08"
+		(property "Value" "4K7"
 			(at 44.7039 82.55 0)
 			(effects
 				(font
@@ -8074,7 +8074,7 @@
 				)
 			)
 		)
-		(property "Value" "330R"
+		(property "Value" "680R"
 			(at 232.463 37.8383 90)
 			(effects
 				(font
@@ -8852,7 +8852,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "4K7"
 			(at 87.63 154.9399 0)
 			(effects
 				(font
@@ -9042,7 +9042,7 @@
 				)
 			)
 		)
-		(property "Value" "330R"
+		(property "Value" "680R"
 			(at 232.463 27.6783 90)
 			(effects
 				(font
@@ -9109,7 +9109,7 @@
 				)
 			)
 		)
-		(property "Value" "330R"
+		(property "Value" "680R"
 			(at 232.463 35.2983 90)
 			(effects
 				(font
@@ -9495,7 +9495,7 @@
 				)
 			)
 		)
-		(property "Value" "330R"
+		(property "Value" "680R"
 			(at 232.463 30.2183 90)
 			(effects
 				(font
@@ -9628,7 +9628,7 @@
 				)
 			)
 		)
-		(property "Value" "330R"
+		(property "Value" "680R"
 			(at 232.463 32.7583 90)
 			(effects
 				(font
@@ -9973,7 +9973,7 @@
 				)
 			)
 		)
-		(property "Value" "330R"
+		(property "Value" "680R"
 			(at 232.463 40.3783 90)
 			(effects
 				(font

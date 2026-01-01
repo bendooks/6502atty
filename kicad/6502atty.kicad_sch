@@ -2982,6 +2982,16 @@
 		)
 		(uuid "95aa2517-2a92-46cb-a53d-a53227175170")
 	)
+	(text "Rom ~{WE}\n"
+		(exclude_from_sim no)
+		(at 134.112 132.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "af252ae2-7403-412f-99b0-a1c32c700b46")
+	)
 	(junction
 		(at 200.66 24.13)
 		(diameter 0)
@@ -3589,7 +3599,7 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 128.27) (xy 125.73 128.27)
+			(xy 114.3 125.73) (xy 125.73 125.73)
 		)
 		(stroke
 			(width 0)
@@ -3729,7 +3739,7 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 123.19) (xy 120.65 123.19)
+			(xy 114.3 120.65) (xy 120.65 120.65)
 		)
 		(stroke
 			(width 0)
@@ -3819,7 +3829,7 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 132.08) (xy 124.46 132.08)
+			(xy 114.3 129.54) (xy 124.46 129.54)
 		)
 		(stroke
 			(width 0)
@@ -3919,7 +3929,7 @@
 	)
 	(wire
 		(pts
-			(xy 123.19 125.73) (xy 114.3 125.73)
+			(xy 123.19 123.19) (xy 114.3 123.19)
 		)
 		(stroke
 			(width 0)
@@ -3989,7 +3999,7 @@
 	)
 	(wire
 		(pts
-			(xy 25.4 50.8) (xy 38.1 50.8)
+			(xy 25.4 55.88) (xy 38.1 55.88)
 		)
 		(stroke
 			(width 0)
@@ -3999,7 +4009,7 @@
 	)
 	(wire
 		(pts
-			(xy 123.19 71.12) (xy 123.19 125.73)
+			(xy 123.19 71.12) (xy 123.19 123.19)
 		)
 		(stroke
 			(width 0)
@@ -4109,7 +4119,7 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 123.19) (xy 120.65 73.66)
+			(xy 120.65 120.65) (xy 120.65 73.66)
 		)
 		(stroke
 			(width 0)
@@ -4459,7 +4469,7 @@
 	)
 	(wire
 		(pts
-			(xy 137.16 138.43) (xy 143.51 138.43)
+			(xy 137.16 138.43) (xy 146.05 138.43)
 		)
 		(stroke
 			(width 0)
@@ -4609,7 +4619,7 @@
 	)
 	(wire
 		(pts
-			(xy 25.4 48.26) (xy 38.1 48.26)
+			(xy 25.4 53.34) (xy 38.1 53.34)
 		)
 		(stroke
 			(width 0)
@@ -5029,7 +5039,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 128.27) (xy 125.73 68.58)
+			(xy 125.73 125.73) (xy 125.73 68.58)
 		)
 		(stroke
 			(width 0)
@@ -5116,6 +5126,16 @@
 			(type default)
 		)
 		(uuid "c94ab6bb-e870-4a8a-be08-3e4314673efe")
+	)
+	(wire
+		(pts
+			(xy 114.3 132.08) (xy 124.46 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c9e28d6f-84c4-439d-8a82-4c1271ad9c61")
 	)
 	(wire
 		(pts
@@ -5607,6 +5627,16 @@
 		)
 		(uuid "12044cc8-9bde-4678-a85d-d689dfeb42c7")
 	)
+	(label "R~{W}ph"
+		(at 124.46 132.08 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "14215e61-f86b-405e-b81d-002f821ca96d")
+	)
 	(label "~{ROM_CE}"
 		(at 124.46 140.97 180)
 		(effects
@@ -6038,7 +6068,7 @@
 		(uuid "90361ae8-a4ab-40d6-90c0-6d7bf40edf62")
 	)
 	(label "CPU_~{IRQ}"
-		(at 25.4 48.26 0)
+		(at 25.4 53.34 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6188,7 +6218,7 @@
 		(uuid "ba1a1c38-d055-42e4-9198-3092354f642b")
 	)
 	(label "CPU_~{NMI}"
-		(at 25.4 50.8 0)
+		(at 25.4 55.88 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6207,8 +6237,8 @@
 		)
 		(uuid "bbcbeebf-133e-4a43-bd94-c2f57447529a")
 	)
-	(label "R~{W}"
-		(at 143.51 138.43 180)
+	(label "R~{W}ph"
+		(at 146.05 138.43 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6328,7 +6358,7 @@
 		(uuid "d5dde28a-0188-4032-a826-ceb395da1a79")
 	)
 	(label "~{R}W"
-		(at 124.46 132.08 180)
+		(at 124.46 129.54 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7166,7 +7196,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "4K7"
 			(at 142.24 128.2699 0)
 			(effects
 				(font
@@ -7710,7 +7740,7 @@
 		(dnp no)
 		(uuid "44ab2d94-f8c1-4f8e-88be-abb6b4a37ddc")
 		(property "Reference" "J12"
-			(at 132.715 130.81 0)
+			(at 132.334 134.112 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7718,7 +7748,7 @@
 			)
 		)
 		(property "Value" "Conn_01x02_Pin"
-			(at 136.144 143.002 0)
+			(at 143.002 143.002 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10939,8 +10969,8 @@
 		)
 	)
 	(sheet
-		(at 90.17 120.65)
-		(size 24.13 43.18)
+		(at 90.17 116.84)
+		(size 24.13 46.99)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -10955,7 +10985,7 @@
 		)
 		(uuid "97889d46-05ef-4a27-a7eb-55210d62cf31")
 		(property "Sheetname" "control"
-			(at 90.17 119.9384 0)
+			(at 90.17 116.1284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11023,7 +11053,7 @@
 			)
 		)
 		(pin "~{R}W" input
-			(at 114.3 132.08 0)
+			(at 114.3 129.54 0)
 			(uuid "31e29b13-df03-4aaf-8c6c-5803f56dc7b8")
 			(effects
 				(font
@@ -11063,7 +11093,7 @@
 			)
 		)
 		(pin "AT_~{ACK}" output
-			(at 114.3 123.19 0)
+			(at 114.3 120.65 0)
 			(uuid "f5a8aa97-dad4-4a45-bf4a-9f118d065a9c")
 			(effects
 				(font
@@ -11153,7 +11183,7 @@
 			)
 		)
 		(pin "ROM_SEL" input
-			(at 114.3 125.73 0)
+			(at 114.3 123.19 0)
 			(uuid "99951606-f76a-4be5-bc0f-d664d0a12457")
 			(effects
 				(font
@@ -11163,7 +11193,7 @@
 			)
 		)
 		(pin "PWM_CLK" output
-			(at 114.3 128.27 0)
+			(at 114.3 125.73 0)
 			(uuid "e27778d8-fe23-4ef1-b0c1-7d9a23232340")
 			(effects
 				(font
@@ -11175,6 +11205,16 @@
 		(pin "~{DISPLAY}" output
 			(at 114.3 153.67 0)
 			(uuid "40fdc235-d399-436d-90c5-7cdd2edc7546")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "R~{W}ph" output
+			(at 114.3 132.08 0)
+			(uuid "525881db-db21-4865-b649-b69361424047")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11245,7 +11285,7 @@
 			)
 		)
 		(pin "BE" bidirectional
-			(at 38.1 58.42 180)
+			(at 38.1 41.91 180)
 			(uuid "7fb10e7d-1818-476f-aa5e-49ad74e22782")
 			(effects
 				(font
@@ -11285,7 +11325,7 @@
 			)
 		)
 		(pin "RDY" bidirectional
-			(at 38.1 68.58 180)
+			(at 38.1 46.99 180)
 			(uuid "ffd33263-b2a4-4e75-8d91-5fbacf140c35")
 			(effects
 				(font
@@ -11305,7 +11345,7 @@
 			)
 		)
 		(pin "~{IRQ}" bidirectional
-			(at 38.1 48.26 180)
+			(at 38.1 53.34 180)
 			(uuid "882a81ff-66b7-44eb-850f-b35262fc73ac")
 			(effects
 				(font
@@ -11315,7 +11355,7 @@
 			)
 		)
 		(pin "~{NMI}" bidirectional
-			(at 38.1 50.8 180)
+			(at 38.1 55.88 180)
 			(uuid "cfda37fb-bbdb-4930-8595-8639a585f796")
 			(effects
 				(font
@@ -11335,7 +11375,7 @@
 			)
 		)
 		(pin "~{SO}" bidirectional
-			(at 38.1 41.91 180)
+			(at 38.1 44.45 180)
 			(uuid "e54b1c16-71f9-49da-b929-d18afe3df33b")
 			(effects
 				(font
