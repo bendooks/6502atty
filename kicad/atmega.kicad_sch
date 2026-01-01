@@ -3001,13 +3001,14 @@
 		)
 		(uuid "7d001f38-379a-4886-b81d-ecaf1657363e")
 	)
-	(text "Note: can use internal PAx pull-ups (possibly)\n"
+	(text "Note: can use internal PAx pull-ups (possibly)\nMaybe change to 680R to use similar resistors to the LEDs"
 		(exclude_from_sim no)
-		(at 179.832 18.796 0)
+		(at 155.956 29.718 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
+			(justify left)
 		)
 		(uuid "be99beec-5c08-460a-b4cb-69d3bd4edf49")
 	)
@@ -3476,7 +3477,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 81.28) (xy 189.23 77.47)
+			(xy 207.01 72.39) (xy 207.01 68.58)
 		)
 		(stroke
 			(width 0)
@@ -3616,7 +3617,7 @@
 	)
 	(wire
 		(pts
-			(xy 193.04 81.28) (xy 189.23 81.28)
+			(xy 210.82 72.39) (xy 207.01 72.39)
 		)
 		(stroke
 			(width 0)
@@ -3736,7 +3737,7 @@
 	)
 	(wire
 		(pts
-			(xy 193.04 85.09) (xy 180.34 85.09)
+			(xy 210.82 76.2) (xy 198.12 76.2)
 		)
 		(stroke
 			(width 0)
@@ -4226,7 +4227,7 @@
 	)
 	(wire
 		(pts
-			(xy 180.34 85.09) (xy 180.34 77.47)
+			(xy 198.12 76.2) (xy 198.12 68.58)
 		)
 		(stroke
 			(width 0)
@@ -4887,7 +4888,7 @@
 	)
 	(hierarchical_label "SCL"
 		(shape bidirectional)
-		(at 193.04 81.28 0)
+		(at 210.82 72.39 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5030,7 +5031,7 @@
 	)
 	(hierarchical_label "SDA"
 		(shape bidirectional)
-		(at 193.04 85.09 0)
+		(at 210.82 76.2 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7111,7 +7112,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 189.23 73.66 0)
+		(at 207.01 64.77 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7120,7 +7121,7 @@
 		(fields_autoplaced yes)
 		(uuid "8951652e-8b32-49e8-b3b8-a98eaaf82545")
 		(property "Reference" "R18"
-			(at 191.77 72.3899 0)
+			(at 209.55 63.4999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7129,7 +7130,7 @@
 			)
 		)
 		(property "Value" "4K7"
-			(at 191.77 74.9299 0)
+			(at 209.55 66.0399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7138,7 +7139,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 187.452 73.66 90)
+			(at 205.232 64.77 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7147,7 +7148,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 189.23 73.66 0)
+			(at 207.01 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7156,7 +7157,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 189.23 73.66 0)
+			(at 207.01 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7934,7 +7935,7 @@
 	)
 	(symbol
 		(lib_id "power:VCC")
-		(at 189.23 69.85 0)
+		(at 207.01 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7943,7 +7944,7 @@
 		(fields_autoplaced yes)
 		(uuid "c335f784-1c32-4971-8210-7faaab24ec4d")
 		(property "Reference" "#PWR040"
-			(at 189.23 73.66 0)
+			(at 207.01 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7952,7 +7953,7 @@
 			)
 		)
 		(property "Value" "VCC"
-			(at 189.23 64.77 0)
+			(at 207.01 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7960,7 +7961,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 189.23 69.85 0)
+			(at 207.01 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7969,7 +7970,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 189.23 69.85 0)
+			(at 207.01 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7978,7 +7979,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 189.23 69.85 0)
+			(at 207.01 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8066,7 +8067,7 @@
 	)
 	(symbol
 		(lib_id "power:VCC")
-		(at 180.34 69.85 0)
+		(at 198.12 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8075,7 +8076,7 @@
 		(fields_autoplaced yes)
 		(uuid "cf460995-4cc4-47c5-b43e-d581bad585db")
 		(property "Reference" "#PWR041"
-			(at 180.34 73.66 0)
+			(at 198.12 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8084,7 +8085,7 @@
 			)
 		)
 		(property "Value" "VCC"
-			(at 180.34 64.77 0)
+			(at 198.12 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8092,7 +8093,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 180.34 69.85 0)
+			(at 198.12 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8101,7 +8102,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 180.34 69.85 0)
+			(at 198.12 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8110,7 +8111,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 180.34 69.85 0)
+			(at 198.12 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8936,7 +8937,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 180.34 73.66 0)
+		(at 198.12 64.77 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8945,7 +8946,7 @@
 		(fields_autoplaced yes)
 		(uuid "f883c5a9-5408-497e-b8a2-da88708a9f3a")
 		(property "Reference" "R9"
-			(at 182.88 72.3899 0)
+			(at 200.66 63.4999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8954,7 +8955,7 @@
 			)
 		)
 		(property "Value" "4K7"
-			(at 182.88 74.9299 0)
+			(at 200.66 66.0399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8963,7 +8964,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 178.562 73.66 90)
+			(at 196.342 64.77 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8972,7 +8973,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 180.34 73.66 0)
+			(at 198.12 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8981,7 +8982,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 180.34 73.66 0)
+			(at 198.12 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
