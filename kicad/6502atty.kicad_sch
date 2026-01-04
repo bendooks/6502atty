@@ -4769,7 +4769,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 68.58) (xy 193.04 68.58)
+			(xy 189.23 68.58) (xy 195.58 68.58)
 		)
 		(stroke
 			(width 0)
@@ -4869,7 +4869,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 60.96) (xy 199.39 60.96)
+			(xy 189.23 60.96) (xy 195.58 60.96)
 		)
 		(stroke
 			(width 0)
@@ -5529,7 +5529,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 66.04) (xy 193.04 66.04)
+			(xy 189.23 66.04) (xy 195.58 66.04)
 		)
 		(stroke
 			(width 0)
@@ -5556,16 +5556,6 @@
 			(justify left bottom)
 		)
 		(uuid "034fd58b-09c4-41a6-b391-2c2f6dad6d77")
-	)
-	(label "~{RAM_CE}"
-		(at 199.39 60.96 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "0525fc79-1fdd-40d4-8e5f-5eadaf28921a")
 	)
 	(label "D5"
 		(at 194.31 110.49 0)
@@ -5727,6 +5717,16 @@
 		)
 		(uuid "273cba63-a6e9-42bc-944e-cf670f2367c1")
 	)
+	(label "A15"
+		(at 195.58 60.96 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "27ae4be7-6e20-4b37-9858-0fcc3f1a8dd0")
+	)
 	(label "AT_~{EN}"
 		(at 124.46 135.89 180)
 		(effects
@@ -5788,7 +5788,7 @@
 		(uuid "377bf96e-c3e5-4610-afec-1be19e4f5695")
 	)
 	(label "~{R}W"
-		(at 193.04 66.04 180)
+		(at 195.58 66.04 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5917,6 +5917,16 @@
 		)
 		(uuid "60ac539a-6165-4a98-99b9-16e9138d76ee")
 	)
+	(label "R~{W}ph"
+		(at 195.58 68.58 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6abbb69e-dcf6-4bc0-a16b-2f94ee541394")
+	)
 	(label "SCL"
 		(at 124.46 58.42 180)
 		(effects
@@ -5956,16 +5966,6 @@
 			(justify left bottom)
 		)
 		(uuid "74971a31-a971-422d-9119-178ba7e4a30d")
-	)
-	(label "R~{W}"
-		(at 193.04 68.58 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "760c6403-a80c-41a3-b355-cdae38f6252d")
 	)
 	(label "A4"
 		(at 156.21 107.95 0)
@@ -6515,7 +6515,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 257.302 93.98 90)
 			(effects
 				(font
@@ -8563,7 +8563,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 245.872 93.98 90)
 			(effects
 				(font

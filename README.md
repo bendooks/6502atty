@@ -24,7 +24,10 @@ The ATmega is probably the easiest MCU to get and program which is 5V tolerant. 
 - Transcription error from prototype, ROM_ACC should be from AND not NAND gate
   - Swao U8C for one of U10 spare gates
 - RDY line missing pull-up resistor
-
+- 74LS573 replaced with 74LS574
+  - 573 latches when Load is high, and our enable is low
+  - 574 will load on rising edge of load pin, so should work
+- Made PCB smaller, moved a few LEDs and things around to make this work
 
 
 
