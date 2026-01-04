@@ -12,6 +12,10 @@ The ATmega is probably the easiest MCU to get and program which is 5V tolerant. 
 
 - The 100UF capacitors are 16mm long so trying 47uF, layout change?
 
+The LED resistors will probably need to be reduced to 680R or low as 506R depending on the LEDs being fitted.
+
+The pull-up/pull-down resistors can be anywhere from 1K to 4K7, experiments with previous boards show 10K may not be suitable with certain variants of the 6052. Anything below 1K is probably going to have issues with current dissapation as that will be around 5mA per resistor. 
+
 ## PCB updates (v1 rev2)
 
 - Added J12 to route ~WE signal to the PGM/~WE to allow SRAM
