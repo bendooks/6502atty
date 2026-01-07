@@ -4037,16 +4037,6 @@
 	)
 	(wire
 		(pts
-			(xy 92.71 62.23) (xy 95.25 62.23)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "baba15f7-e5d2-4026-b3c3-52770022bb50")
-	)
-	(wire
-		(pts
 			(xy 135.89 87.63) (xy 146.05 87.63)
 		)
 		(stroke
@@ -4367,7 +4357,7 @@
 	)
 	(wire
 		(pts
-			(xy 77.47 62.23) (xy 85.09 62.23)
+			(xy 77.47 62.23) (xy 95.25 62.23)
 		)
 		(stroke
 			(width 0)
@@ -4725,6 +4715,16 @@
 		)
 		(uuid "93145c77-f343-4cb8-abc3-4e5f6e8072d6")
 	)
+	(label "AT_XTI"
+		(at 96.52 54.61 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9a727f3b-a84c-4bb9-8f4d-9e68c11317cc")
+	)
 	(label "D4"
 		(at 154.94 59.69 0)
 		(effects
@@ -4754,6 +4754,16 @@
 			(justify left bottom)
 		)
 		(uuid "b2669213-0ca2-4a00-a09f-0fc6b7e15cb7")
+	)
+	(label "AT_XTO"
+		(at 96.52 59.69 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b4263b40-5e09-4192-b19f-258e95cb2a7d")
 	)
 	(label "AT_MISO"
 		(at 27.94 96.52 0)
@@ -8259,74 +8269,6 @@
 			(project "6502atty"
 				(path "/f612fa92-d5fa-4cb5-a666-c1c24e7cbb30/83b01514-6b56-4f3e-9a42-17260f217a5e"
 					(reference "#PWR0104")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 88.9 62.23 90)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d65034f2-1798-4fbf-b065-7e1c3da65c51")
-		(property "Reference" "R4"
-			(at 88.9 68.58 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1K"
-			(at 88.9 66.04 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 88.9 60.452 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 88.9 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 88.9 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "43b2ab46-92e5-4356-8347-c3e26124243c")
-		)
-		(pin "1"
-			(uuid "cad5c8b5-963b-43fc-90df-a58dcfe5fec9")
-		)
-		(instances
-			(project "6502atty"
-				(path "/f612fa92-d5fa-4cb5-a666-c1c24e7cbb30/83b01514-6b56-4f3e-9a42-17260f217a5e"
-					(reference "R4")
 					(unit 1)
 				)
 			)
