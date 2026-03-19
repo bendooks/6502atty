@@ -462,9 +462,6 @@ int main(void)
 
 	count = 0;
 
-	if (1) {
-	  pf("6502Atty (" GIT_VERSION ")\n");
-	}
 
 	/* initialise our virtual ram/rom */
 	ram[0xFC & 0x1f] = 0x00;
@@ -479,6 +476,11 @@ int main(void)
 
 	sei();
 
+	init_uart();
+	if (1) {
+	  pf("6502Atty (" GIT_VERSION ")\n");
+	}
+	
 	/* prototype needs to release master reset */
 	_delay_ms(100);
 #ifdef PIN_MAIN_RESET
