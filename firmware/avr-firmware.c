@@ -123,8 +123,7 @@ JMP $800
 
 ISR(TIMER1_COMPA_vect)
 {
-	//PORTD ^= 0x80;
-	PORTB ^= 0x01;
+	toggle_pin(PIN_AT_LED);
 }
 
 /* set the clock divider post initialisation. The fuses only allow /1 or /8
@@ -255,9 +254,8 @@ static unsigned ram_test_pattern(unsigned addr)
 
 static void halt(void)
 {
-	PORTB &= ~(1 << 0);
+	set_pin(PIN_6502_nRESET, 0);
 	PORTD &= ~(1 << 7);		
-
 }
 
 static void ram_test_isr_code(unsigned addr)
@@ -462,7 +460,6 @@ int main(void)
 
 	count = 0;
 
-
 	/* initialise our virtual ram/rom */
 	ram[0xFC & 0x1f] = 0x00;
 	ram[0xFD & 0x1f] = 0xC0;  // set "rom" as reset vectir
@@ -492,11 +489,11 @@ int main(void)
 	EICRA = (1 << ISC21) | (0 << ISC20);
 	EIMSK = (1 << 2);
 
-#if 0
+#if 1
 	/* timer to toggle leds for testing */
 
 	TCCR1B |= (1 << WGM12); // Configure timer 1 for CTC mode
-        OCR1A = 39062/20;        // Set CTC compare value to 1Hz at 8MHz F_CPU (prescale 256)
+        OCR1A = 1000000000/(F_CPU/256);        // Set CTC compare value to 1Hz
         TCCR1B |= (1 << CS12);  // Start timer at Fcpu/256
 
         TIMSK1 = (1 << OCIE1A);
