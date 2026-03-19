@@ -254,6 +254,7 @@ static unsigned ram_test_pattern(unsigned addr)
 
 static void halt(void)
 {
+	pf("HALT\n");
 	set_pin(PIN_6502_nRESET, 0);
 	PORTD &= ~(1 << 7);		
 }
@@ -287,7 +288,7 @@ static void ram_test_isr_code(unsigned addr)
 	} else if ((ram_test_ptr & 0xff) == 0) {
 		pf(".");
 	}
-	
+
 	switch (ram_test) {
 	case 1:
 		ram[1] = ram_test_pattern(ram_test_ptr);
@@ -416,6 +417,8 @@ ISR(INT2_vect)
 	addr &= 0x1f;
 
 	if (read) {
+		/* PC7 being 0 maens selelected as IO device */
+
 		if ((portc & (1 << 7)) == 0) {
 			pf("RD %02x = %02x C=%u\n", addr, ram[addr], count);
 		} else {
