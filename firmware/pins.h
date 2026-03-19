@@ -42,7 +42,7 @@
 #endif
 
 #define PIN_6502_nRESET PIN(BANK_B, 1, DEF_OUTPUT_0)
-#define PIN_ROM_SEL	PIN(BANK_D, 4, DEF_OUTPUT_1)	/* start with ATMega as 'ROM' */
+#define PIN_ROM_SEL	PIN(BANK_D, 4, DEF_OUTPUT_0)	/* start with ATMega as 'ROM' */
 #define PIN_AT_ACK	PIN(BANK_D, 5, DEF_OUTPUT_1)
 
 #define PIN_SER_TX0	PIN(BANK_D, 1, DEF_OUTPUT_1)	/* output 1 for serial transmit */
