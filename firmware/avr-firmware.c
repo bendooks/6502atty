@@ -39,24 +39,7 @@ static void init_pwm(void)
 	OCR2B = 0x5;
 }
 
-static unsigned char rom[32] = {
-#if 1
-/* *=$c000
-   CLC
-   LDX #$00
- loop STX $801E
-  INX
-BCC loop
-.END
-	*/
-
-	0xa2, 0x00,
-	0x18,
-	0x8e, 0x1e, 0x80,
-	0xe8,
-	0x90, 0xfa,
-#endif
-};
+static unsigned char rom[32];
 
 ISR(TIMER1_COMPA_vect)
 {
@@ -354,7 +337,8 @@ ISR(INT2_vect)
 	addr &= 0x1f;
 
 	if (1) {
-		pf("IR: addr=%02x %c portc=%02x\n", addr, read ? 'R' : 'W', portc);
+		pf("IR: addr=%02x %c portc=%02x (%c)\n",
+		   addr, read ? 'R' : 'W', portc, (portc & (1<<7)) ? 'M' : 'P');
 	}
 
 	if (read) {
@@ -444,6 +428,10 @@ int main(void)
 #endif	
 
 	pf("\nstarting 6502..\n");
+
+	/* pulse ack pin to reset the nCPU_STOP signal */
+	set_pin(PIN_AT_ACK, 0);
+	set_pin(PIN_AT_ACK, 1);
 
 	_delay_ms(100);
 	set_pin(PIN_6502_nRESET, 1);	/* release 6502 reset */
