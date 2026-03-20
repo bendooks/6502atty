@@ -39,7 +39,13 @@ static void init_pwm(void)
 	OCR2B = 0x5;
 }
 
-static unsigned char rom[32];
+static unsigned char rom[32] = {
+	/* download code helper */
+	0xAD, 0x00,		/* LDA #0x00 */
+	0x8D, 0x00, 0x00,	/* STA 0x0000 */
+	0x90, 0xF9,		/* BCC start */
+	0x4C, 0xCD, 0xAB,	/* JMP 0xABCD */
+};
 
 ISR(TIMER1_COMPA_vect)
 {
@@ -237,8 +243,8 @@ static unsigned count = 0;
 static inline void update_download_state(void)
 {
 	rom[1] = pgm_read_byte(download_ptr);
-	rom[3] = download_to & 0xff;
-	rom[4] = download_to >> 8;
+	rom[8] = rom[3] = download_to & 0xff;
+	rom[9] = rom[4] = download_to >> 8;
 	pf("DL %04x %02x (C=%d)\n", download_to, rom[2], count);
 
 	download_to++;
@@ -337,7 +343,7 @@ ISR(INT2_vect)
 	addr &= 0x1f;
 
 	if (1) {
-		pf("IR: addr=%02x %c portc=%02x (%c)\n",
+		pf("IR: A=%02x %c C=%02x (%c)\n",
 		   addr, read ? 'R' : 'W', portc, (portc & (1<<7)) ? 'M' : 'P');
 	}
 
