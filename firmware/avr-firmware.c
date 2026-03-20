@@ -80,7 +80,7 @@ JMP loop
 #endif
 
 
-#if 0
+#if 1
 	/*
 
 *=$c000
@@ -99,7 +99,7 @@ BCC loop
 	0x90, 0xfa,
 #endif
 
-#if 1
+#if 0
 	/* note, the LDX should not affect C flag */
 	/*
 *=$c000
@@ -111,7 +111,7 @@ BCC loop
 JMP $800
 .END
 	 */
-
+	0x18,
 	0xa2, 0x00,
 	0x8e, 0x1e, 0x80,
 	0x90, 0xf9,
@@ -244,7 +244,7 @@ unsigned download = sizeof(download_code);
 
 static const unsigned ram_sz = 8 * 1024;
 static unsigned ram_test_ptr = 0x0000;
-static unsigned ram_test = 1;
+static unsigned ram_test = 0;
 
 static unsigned ram_test_pattern(unsigned addr)
 {
@@ -381,7 +381,7 @@ static inline void handle_rom_read(unsigned addr)
 static void handle_dev_write(unsigned addr, unsigned data)
 {
 	unsigned tmp;
-	
+
 	switch (addr) {
 	case 0x1d:
 		pf("%02x\n", data);
@@ -415,6 +415,10 @@ ISR(INT2_vect)
 	unsigned read = PINB & (1 << 1);
 
 	addr &= 0x1f;
+
+	if (1) {
+		pf("IR: addr=%02x %c portc=%02x\n", addr, read ? 'R' : 'W', portc);
+	}
 
 	if (read) {
 		/* PC7 being 0 maens selelected as IO device */
@@ -506,6 +510,8 @@ int main(void)
 
 	_delay_ms(100);
 	set_pin(PIN_6502_nRESET, 1);	/* release 6502 reset */
+
+	pf("GO\n");
 
 	while (1) { }
 }
