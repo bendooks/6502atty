@@ -67,6 +67,7 @@ bin:  $(PRG).bin
 srec: $(PRG).srec
 
 avr-firmware.o:	pin_defaults.h git-rev.h gpio.h firmware.h  Makefile
+avr-firmware.o: target_asm/test_inc.th target_asm/test_str.th
 
 
 pin_defaults.h:	pins.h extract_defaults.awk Makefile
@@ -82,7 +83,8 @@ build-info:
 
 .PHONY: prog
 prog:
-	avrdude -C +./avrdude.conf -c usbasp -v -p m1284p -F  $(AVRFUSE) -U  $(PRG).hex
+	/home/ben/avrdude/build_linux/src/avrdude  -c usbasp -B 125kHz  -v -p m1284p -F  $(AVRFUSE) -U  $(PRG).hex
+#	/home/ben/avrdude/build_linux/src/avrdude -c avrisp2 -v -p m1284p -F  $(AVRFUSE) -U  $(PRG).hex
 
 .PHONY: clean
 clean:
