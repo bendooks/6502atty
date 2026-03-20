@@ -1,0 +1,3 @@
+# intermediate build bits
+*.bin
+*.dump
