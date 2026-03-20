@@ -41,7 +41,6 @@
 #define PIN_DB7		PIN(BANK_A, 7, DEF_OUTPUT_1)
 #endif
 
-#define PIN_6502_nRESET PIN(BANK_B, 1, DEF_OUTPUT_0)
 #define PIN_ROM_SEL	PIN(BANK_D, 4, DEF_OUTPUT_0)	/* start with ATMega as 'ROM' */
 #define PIN_AT_ACK	PIN(BANK_D, 5, DEF_OUTPUT_1)
 
@@ -53,12 +52,13 @@
 
 #ifdef BUILD_PROTOTYPE
 #define PIN_MAIN_RESET	PIN(BANK_D, 7, DEF_OUTPUT_0)
+#define PIN_6502_nRESET PIN(BANK_B, 1, DEF_OUTPUT_0)
 #endif
 
 /* release1 defines */
 
 #ifdef BUILD_RELEASE
-
+#define PIN_6502_nRESET PIN(BANK_B, 0, DEF_OUTPUT_0)
 #define PIN_AT_LED	PIN(BANK_D, 7, DEF_OUTPUT_1)
 #endif
 
