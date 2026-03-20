@@ -41,7 +41,7 @@ static void init_pwm(void)
 
 static unsigned char rom[32] = {
 	/* download code helper */
-	0xAD, 0x00,		/* LDA #0x00 */
+	0xA9, 0x00,		/* LDA #0x00 */
 	0x8D, 0x00, 0x00,	/* STA 0x0000 */
 	0x90, 0xF9,		/* BCC start */
 	0x4C, 0xCD, 0xAB,	/* JMP 0xABCD */
@@ -142,8 +142,8 @@ BCC loop
 BRK
 .END
 	*/
-	0xa2, 0x00,
 	0x18,
+	0xa2, 0x00,
 	0x8e, 0x1e, 0x80,
 	0xe8,
 	0x90, 0xfa,
@@ -247,9 +247,9 @@ static unsigned count = 0;
 static inline void update_download_state(void)
 {
 	rom[1] = pgm_read_byte(download_ptr);
-	rom[8] = rom[3] = download_to & 0xff;
-	rom[9] = rom[4] = download_to >> 8;
-	pf("DL %04x %02x (C=%d)\n", download_to, rom[2], count);
+	rom[3] = download_to & 0xff;
+	rom[4] = download_to >> 8;
+	pf("DL %04x %02x (C=%d)\n", download_to, rom[1], count);
 
 	download_to++;
 	download_ptr++;
@@ -258,8 +258,6 @@ static inline void update_download_state(void)
 	if (download == 0) {
 		pf("Download done\n");
 		rom[5] = 0xb0;  /* change BCC to BCS */
-	} else {
-		rom[5] = 0x90;
 	}
 }
 
@@ -392,7 +390,7 @@ ISR(INT2_vect)
 	set_pin(PIN_AT_ACK, 1);
 
 	count++;
-	if (count > 64)
+	if (count > 128)
 		halt();
 }
 
@@ -450,6 +448,11 @@ int main(void)
 	/* pulse ack pin to reset the nCPU_STOP signal */
 	set_pin(PIN_AT_ACK, 0);
 	set_pin(PIN_AT_ACK, 1);
+
+	if (download) {
+		rom[8] = download_to & 0xff;
+		rom[9] = download_to >> 8;
+	}
 
 	_delay_ms(100);
 	pf("GO\n");
