@@ -440,9 +440,8 @@ int main(void)
 	set_pin(PIN_AT_ACK, 1);
 
 	_delay_ms(100);
-	set_pin(PIN_6502_nRESET, 1);	/* release 6502 reset */
-
 	pf("GO\n");
 
+	set_pin(PIN_6502_nRESET, 1);	/* release 6502 reset */
 	while (1) { }
 }
