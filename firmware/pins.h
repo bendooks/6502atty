@@ -47,12 +47,14 @@
 #define PIN_SER_TX0	PIN(BANK_D, 1, DEF_OUTPUT_1)	/* output 1 for serial transmit */
 #define PIN_PWN_CLK	PIN(BANK_D, 6, DEF_OUTPUT_1)	/* output 1 to use pin as PWM */
 
-
 /* prototype defines */
 
 #ifdef BUILD_PROTOTYPE
 #define PIN_MAIN_RESET	PIN(BANK_D, 7, DEF_OUTPUT_0)
 #define PIN_6502_nRESET PIN(BANK_B, 1, DEF_OUTPUT_0)
+
+#define PIN_nNMI	PIN(BANK_B, 3, DEF_INPUT_PU)
+#define PIN_nIRQ	PIN(BANK_B, 4, DEF_INPUT_PU)
 #endif
 
 /* release1 defines */
@@ -60,6 +62,9 @@
 #ifdef BUILD_RELEASE
 #define PIN_6502_nRESET PIN(BANK_B, 0, DEF_OUTPUT_0)
 #define PIN_AT_LED	PIN(BANK_D, 7, DEF_OUTPUT_1)
+
+#define PIN_nNMI	PIN(BANK_B, 4, DEF_INPUT_PU)
+#define PIN_nIRQ	PIN(BANK_B, 3, DEF_INPUT_PU)
 #endif
 
 
