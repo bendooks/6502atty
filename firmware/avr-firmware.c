@@ -39,55 +39,13 @@ static void init_pwm(void)
 	OCR2B = 0x5;
 }
 
-static unsigned char ram[32] = {
-#if 0
-/*
-* = $C000
-C000 START  LDA #$00        A9 00
-C002 LOOP   STA $C800       8D 00 C8
-C005        ADC #$01        69 01
-C007        SEC             38
-C008        BCS LOOP        B0 F8
-C00A .END
-done.
-*/
-	0xa9, 0x00,
-	0x8d, 0x00, 0x88 /* 0xc8 */,
-	0x69, 0x01,
-	0x38,
-	0xb0, 0xf8,
-	0x00, /* 0x0a */
-	0x00, /* 0x0b */
-	0x00, /* 0x0c */
-	0x00, /* 0x0d */
-	0x00, /* 0x0e */
-	0x00, /* 0x0f */
-#endif
-
-#if 0
-/*
-*=$c000
-LDX #$00
-loop STX $801E
-INX
-JMP loop
-.END
-*/
-	0xa2, 0x00,
-	0x8e, 0x1e, 0x80,
-	0xe8,
-	0x4c, 0x02, 0xc0,
-#endif
-
-
+static unsigned char rom[32] = {
 #if 1
-	/*
-
-*=$c000
-LDX #$00
-CLC
-loop STX $801E
-INX
+/* *=$c000
+   CLC
+   LDX #$00
+ loop STX $801E
+  INX
 BCC loop
 .END
 	*/
@@ -98,27 +56,6 @@ BCC loop
 	0xe8,
 	0x90, 0xfa,
 #endif
-
-#if 0
-	/* note, the LDX should not affect C flag */
-	/*
-*=$c000
-CLC
-loop
-LDX #0x00
-STX $801E
-BCC loop
-JMP $800
-.END
-	 */
-	0x18,
-	0xa2, 0x00,
-	0x8e, 0x1e, 0x80,
-	0x90, 0xf9,
-	0x4c, 0x00, 0x08,
-
-#endif
-
 };
 
 ISR(TIMER1_COMPA_vect)
@@ -274,9 +211,9 @@ static void ram_test_isr_code(unsigned addr)
 			pf("RAM test - patterns written\n");
 
 			for (ptr = 0x00; ptr < 0x10; ptr++)
-				ram[ptr] = pgm_read_byte(ramtest_code_read + ptr);
+				rom[ptr] = pgm_read_byte(ramtest_code_read + ptr);
 
-			PORTA = ram[1];
+			PORTA = rom[1];
 			break;
 		case 3:
 			pf("RAM test done\n");
@@ -291,14 +228,14 @@ static void ram_test_isr_code(unsigned addr)
 
 	switch (ram_test) {
 	case 1:
-		ram[1] = ram_test_pattern(ram_test_ptr);
-		ram[3] = ram_test_ptr & 0xff;
-		ram[4] = ram_test_ptr >> 8;
+		rom[1] = ram_test_pattern(ram_test_ptr);
+		rom[3] = ram_test_ptr & 0xff;
+		rom[4] = ram_test_ptr >> 8;
 		ram_test_ptr++;
 		break;
 	case 2:
-		ram[1] = ram_test_ptr & 0xff;
-		ram[2] = ram_test_ptr >> 8;
+		rom[1] = ram_test_ptr & 0xff;
+		rom[2] = ram_test_ptr >> 8;
 		break;
 	}
 
@@ -316,10 +253,10 @@ static unsigned count = 0;
  */
 static inline void update_download_state(void)
 {
-	ram[1] = pgm_read_byte(download_ptr);
-	ram[3] = download_to & 0xff;
-	ram[4] = download_to >> 8;
-	pf("DL %04x %02x (C=%d)\n", download_to, ram[2], count);
+	rom[1] = pgm_read_byte(download_ptr);
+	rom[3] = download_to & 0xff;
+	rom[4] = download_to >> 8;
+	pf("DL %04x %02x (C=%d)\n", download_to, rom[2], count);
 
 	download_to++;
 	download_ptr++;
@@ -327,9 +264,9 @@ static inline void update_download_state(void)
 
 	if (download == 0) {
 		pf("Download done\n");
-		ram[5] = 0xb0;  /* change BCC to BCS */
+		rom[5] = 0xb0;  /* change BCC to BCS */
 	} else {
-		ram[5] = 0x90;
+		rom[5] = 0x90;
 	}
 }
 
@@ -338,21 +275,21 @@ static inline void update_download_state(void)
  */
 static inline void handle_rom_read(unsigned addr)
 {
-	PORTA = ram[addr];
+	PORTA = rom[addr];
 
 	if (addr == 0x1e) {
 		unsigned ptr;
 		pf("BRK!\n");
 
 		for (ptr = 0x00; ptr < 0x10; ptr++)
-			ram[ptr] = pgm_read_byte(ramtest_code_read + ptr);
+			rom[ptr] = pgm_read_byte(ramtest_code_read + ptr);
 
-		PORTA = ram[addr];
+		PORTA = rom[addr];
 		download_to = 0x1fc;
 		dump_mem  = 1;
 		download = 0;
 		ram_test = 0;
-		ram[5] = 0x1d;  // change where memory is written to
+		rom[5] = 0x1d;  // change where memory is written to
 	}
 
 	if (download) {
@@ -365,8 +302,8 @@ static inline void handle_rom_read(unsigned addr)
 	} else if (dump_mem) {
 		if (addr == 0) {
 			pf("DBG %04x = ", download_to);
-			ram[1] = download_to & 0xff;
-			ram[2] = download_to >> 8;
+			rom[1] = download_to & 0xff;
+			rom[2] = download_to >> 8;
 			download_to++;
 			if (download_to == 0x200)
 				download_to = 0x800;
@@ -424,10 +361,10 @@ ISR(INT2_vect)
 		/* PC7 being 0 maens selelected as IO device */
 
 		if ((portc & (1 << 7)) == 0) {
-			pf("RD %02x = %02x C=%u\n", addr, ram[addr], count);
+			pf("RD %02x = %02x C=%u\n", addr, rom[addr], count);
 		} else {
 			if (0 || (addr >= 0x1e) || dump_mem)
-				pf("RD %02x = %02x C=%u\n", addr, ram[addr], count);
+				pf("RD %02x = %02x C=%u\n", addr, rom[addr], count);
 
 			handle_rom_read(addr);
 		}
@@ -468,10 +405,10 @@ int main(void)
 	count = 0;
 
 	/* initialise our virtual ram/rom */
-	ram[0xFC & 0x1f] = 0x00;
-	ram[0xFD & 0x1f] = 0xC0;  // set "rom" as reset vectir
-	ram[0xFE & 0x1f] = 0x00;
-	ram[0xFF & 0x1f] = 0xC0;  // set "rom" as break vectir
+	rom[0xFC & 0x1f] = 0x00;
+	rom[0xFD & 0x1f] = 0xC0;  // set "rom" as reset vectir
+	rom[0xFE & 0x1f] = 0x00;
+	rom[0xFF & 0x1f] = 0xC0;  // set "rom" as break vectir
 
 	init_gpio();
 	init_clock();
