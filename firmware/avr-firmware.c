@@ -12,6 +12,7 @@
 #include <string.h>
 #include <stdarg.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 void pf(const char *msg, ...);
   
@@ -150,6 +151,7 @@ BRK
 	0x00,
 };
 
+#include "target_asm/test_str.dh"
 
 static const unsigned char ramtest_code_read[] PROGMEM = {
 /*
@@ -167,9 +169,16 @@ BCC loop
 	0x90, 0xf8,
 };
 
+#if 0
 const unsigned char *download_ptr = download_code;
-unsigned download_to = 0x800;
 unsigned download = sizeof(download_code);
+#endif
+
+const unsigned char *download_ptr = test_str_bin;
+unsigned download = sizeof(test_str_bin);
+
+
+unsigned download_to = 0x800;
 
 static const unsigned ram_sz = 8 * 1024;
 static unsigned ram_test_ptr = 0x0000;
@@ -268,7 +277,7 @@ static inline void handle_rom_read(unsigned addr)
 {
 	PORTA = rom[addr];
 
-	if (addr == 0x1e) {
+	if (addr == 0x1e && false) {
 		unsigned ptr;
 		pf("BRK!\n");
 
@@ -315,6 +324,9 @@ static void handle_dev_write(unsigned addr, unsigned data)
 	unsigned tmp;
 
 	switch (addr) {
+	case 0x1c:
+		pf("%c", data);
+		break;
 	case 0x1d:
 		pf("%02x\n", data);
 		break;
@@ -348,7 +360,7 @@ ISR(INT2_vect)
 
 	addr &= 0x1f;
 
-	if (1) {
+	if (0) {
 		pf("IR: A=%02x %c C=%02x (%c)\n",
 		   addr, read ? 'R' : 'W', portc, (portc & (1<<7)) ? 'M' : 'P');
 	}
@@ -390,7 +402,7 @@ ISR(INT2_vect)
 	set_pin(PIN_AT_ACK, 1);
 
 	count++;
-	if (count > 128)
+	if (count > 128 && false)
 		halt();
 }
 
