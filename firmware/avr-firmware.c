@@ -47,9 +47,12 @@ static unsigned char rom[32] = {
 	0x4C, 0xCD, 0xAB,	/* JMP 0xABCD */
 };
 
+static unsigned char halted = 0;
+
 ISR(TIMER1_COMPA_vect)
 {
-	toggle_pin(PIN_AT_LED);
+	if (!halted)
+		toggle_pin(PIN_AT_LED);
 }
 
 /* set the clock divider post initialisation. The fuses only allow /1 or /8
@@ -182,6 +185,7 @@ static void halt(void)
 {
 	pf("HALT\n");
 	set_pin(PIN_6502_nRESET, 0);
+	halted = 1;
 	PORTD &= ~(1 << 7);		
 }
 
@@ -302,6 +306,10 @@ static inline void handle_rom_read(unsigned addr)
 		}
 
 	}
+
+	if (1) {
+		pf("RR: A=%02x => %02x\n", addr, PORTA);
+	}
 }
 
 static void handle_dev_write(unsigned addr, unsigned data)
@@ -384,6 +392,8 @@ ISR(INT2_vect)
 	set_pin(PIN_AT_ACK, 1);
 
 	count++;
+	if (count > 64)
+		halt();
 }
 
 int main(void)
@@ -396,9 +406,11 @@ int main(void)
 
 	/* initialise our virtual ram/rom */
 	rom[0xFC & 0x1f] = 0x00;
-	rom[0xFD & 0x1f] = 0xC0;  // set "rom" as reset vectir
+	rom[0xFD & 0x1f] = 0xC0;  // set "rom" as reset vector
 	rom[0xFE & 0x1f] = 0x00;
-	rom[0xFF & 0x1f] = 0xC0;  // set "rom" as break vectir
+	rom[0xFF & 0x1f] = 0xC0;  // set "rom" as break vector
+	rom[0xFE & 0x1f] = 0x18;
+	rom[0xFF & 0x1f] = 0xC0;  // set "rom" as nmi vector
 
 	init_gpio();
 	init_clock();
