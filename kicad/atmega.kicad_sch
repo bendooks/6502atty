@@ -8837,7 +8837,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10K"
+		(property "Value" "1K"
 			(at 79.248 26.6121 0)
 			(effects
 				(font
@@ -8846,7 +8846,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical"
 			(at 75.692 25.4 90)
 			(effects
 				(font
@@ -8864,7 +8864,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" ""
 			(at 77.47 25.4 0)
 			(effects
 				(font
