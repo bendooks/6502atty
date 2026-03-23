@@ -3509,7 +3509,7 @@
 	)
 	(wire
 		(pts
-			(xy 80.01 179.07) (xy 80.01 180.34)
+			(xy 60.96 180.34) (xy 60.96 181.61)
 		)
 		(stroke
 			(width 0)
@@ -4159,16 +4159,6 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 187.96) (xy 59.69 185.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "518e3db5-aebb-4a6b-a9bc-c59e86870353")
-	)
-	(wire
-		(pts
 			(xy 120.65 120.65) (xy 120.65 73.66)
 		)
 		(stroke
@@ -4789,7 +4779,7 @@
 	)
 	(wire
 		(pts
-			(xy 80.01 187.96) (xy 80.01 185.42)
+			(xy 60.96 189.23) (xy 60.96 186.69)
 		)
 		(stroke
 			(width 0)
@@ -5446,16 +5436,6 @@
 			(type default)
 		)
 		(uuid "eb626527-08fa-42d3-ac0c-3bd714dcb03d")
-	)
-	(wire
-		(pts
-			(xy 59.69 179.07) (xy 59.69 180.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "eceab7dd-8c8a-4fcd-9396-29fe7250dfd2")
 	)
 	(wire
 		(pts
@@ -7727,7 +7707,7 @@
 	)
 	(symbol
 		(lib_id "Device:C_Polarized_Small")
-		(at 80.01 182.88 0)
+		(at 60.96 184.15 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7736,7 +7716,7 @@
 		(fields_autoplaced yes)
 		(uuid "36d26d64-2309-49f3-aa47-d00d39f63604")
 		(property "Reference" "C23"
-			(at 82.55 181.0638 0)
+			(at 63.5 182.3338 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7745,7 +7725,7 @@
 			)
 		)
 		(property "Value" "100uF/16V"
-			(at 82.55 183.6038 0)
+			(at 63.5 184.8738 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7754,7 +7734,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_THT:CP_Axial_L10.0mm_D6.0mm_P15.00mm_Horizontal"
-			(at 80.01 182.88 0)
+			(at 60.96 184.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7763,7 +7743,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 80.01 182.88 0)
+			(at 60.96 184.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7772,7 +7752,7 @@
 			)
 		)
 		(property "Description" "Polarized capacitor, small symbol"
-			(at 80.01 182.88 0)
+			(at 60.96 184.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8144,7 +8124,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 80.01 187.96 0)
+		(at 60.96 189.23 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8152,7 +8132,7 @@
 		(dnp no)
 		(uuid "4a56c43b-fa1b-40a3-b94e-e35cabffe93a")
 		(property "Reference" "#PWR095"
-			(at 80.01 194.31 0)
+			(at 60.96 195.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8161,7 +8141,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 80.01 193.04 0)
+			(at 60.96 194.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8169,7 +8149,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 80.01 187.96 0)
+			(at 60.96 189.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8178,7 +8158,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 80.01 187.96 0)
+			(at 60.96 189.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8187,7 +8167,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 80.01 187.96 0)
+			(at 60.96 189.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8202,71 +8182,6 @@
 			(project "6502atty"
 				(path "/f612fa92-d5fa-4cb5-a666-c1c24e7cbb30"
 					(reference "#PWR095")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 59.69 187.96 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "505948d0-66ed-4580-b19a-31dba6a6809f")
-		(property "Reference" "#PWR093"
-			(at 59.69 194.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 59.69 193.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 59.69 187.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 59.69 187.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 59.69 187.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "622ced7a-656d-48df-8f64-134cf1dc2f49")
-		)
-		(instances
-			(project "6502atty"
-				(path "/f612fa92-d5fa-4cb5-a666-c1c24e7cbb30"
-					(reference "#PWR093")
 					(unit 1)
 				)
 			)
@@ -9274,76 +9189,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C_Polarized_Small")
-		(at 59.69 182.88 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "84b8f6b3-158e-4bf8-8354-367381d1fca6")
-		(property "Reference" "C22"
-			(at 62.23 181.0638 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100uF/16V"
-			(at 62.23 183.6038 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_THT:CP_Axial_L10.0mm_D6.0mm_P15.00mm_Horizontal"
-			(at 59.69 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 59.69 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Polarized capacitor, small symbol"
-			(at 59.69 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "80ef201a-9ea1-4aa6-974e-b65c39f0abd7")
-		)
-		(pin "1"
-			(uuid "4b391aef-f7d4-43ff-b548-92c24a13de18")
-		)
-		(instances
-			(project "6502atty"
-				(path "/f612fa92-d5fa-4cb5-a666-c1c24e7cbb30"
-					(reference "C22")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 146.05 111.76 0)
 		(unit 1)
@@ -9751,72 +9596,6 @@
 			(project "6502atty"
 				(path "/f612fa92-d5fa-4cb5-a666-c1c24e7cbb30"
 					(reference "C11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:VCC")
-		(at 59.69 179.07 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a5a65652-d03d-42c7-a4fd-eb5ae706160f")
-		(property "Reference" "#PWR092"
-			(at 59.69 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "VCC"
-			(at 59.69 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 59.69 179.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 59.69 179.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 59.69 179.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9ab1398e-71ac-49ff-b1b5-e9584a024f0f")
-		)
-		(instances
-			(project "6502atty"
-				(path "/f612fa92-d5fa-4cb5-a666-c1c24e7cbb30"
-					(reference "#PWR092")
 					(unit 1)
 				)
 			)
@@ -10580,7 +10359,7 @@
 	)
 	(symbol
 		(lib_id "power:VCC")
-		(at 80.01 179.07 0)
+		(at 60.96 180.34 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10589,7 +10368,7 @@
 		(fields_autoplaced yes)
 		(uuid "ddf15dbe-efad-4ddc-a9b0-bc7075b87c02")
 		(property "Reference" "#PWR094"
-			(at 80.01 182.88 0)
+			(at 60.96 184.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10598,7 +10377,7 @@
 			)
 		)
 		(property "Value" "VCC"
-			(at 80.01 173.99 0)
+			(at 60.96 175.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10606,7 +10385,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 80.01 179.07 0)
+			(at 60.96 180.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10615,7 +10394,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 80.01 179.07 0)
+			(at 60.96 180.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10624,7 +10403,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 80.01 179.07 0)
+			(at 60.96 180.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)

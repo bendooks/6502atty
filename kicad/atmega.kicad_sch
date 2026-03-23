@@ -8829,7 +8829,7 @@
 		(fields_autoplaced yes)
 		(uuid "f1948e83-a409-4286-9ad5-c3dbcc0998c6")
 		(property "Reference" "R1"
-			(at 79.248 24.1878 0)
+			(at 80.01 24.1299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8837,8 +8837,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1K"
-			(at 79.248 26.6121 0)
+		(property "Value" "10K"
+			(at 80.01 26.6699 0)
 			(effects
 				(font
 					(size 1.27 1.27)
